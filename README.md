@@ -7,9 +7,8 @@ Weather Bot is a Telegram bot that provides real-time weather information for an
 
 ## Features
 - Get current weather by city name
-- Temperature in Celsius and Fahrenheit
+- Temperature in Celsius
 - Weather condition description
-- Wind speed, humidity, and more
 - Error handling for invalid city names or API errors
 
 ## Setup
