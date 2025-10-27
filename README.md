@@ -52,4 +52,3 @@ Send your city name to the bot in Telegram and receive a detailed weather report
 This project is licensed under the MIT License.
 ```
 
-This README covers installation, usage, features, and configuration details relevant to your bot project.
