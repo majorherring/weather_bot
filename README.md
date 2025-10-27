@@ -41,7 +41,7 @@ Weather Bot is a Telegram bot that provides real-time weather information for an
 
 5. Run the bot:
    ```
-   python bot.py
+   python main.py
    ```
 
 ## Usage
