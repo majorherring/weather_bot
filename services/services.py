@@ -2,12 +2,16 @@ import aiohttp
 import asyncio
 import json
 import logging
+from datetime import datetime
 from config.config import Config,load_config
 from lexicon.lexicon import LEXICON_RU
 logger=logging.getLogger(__name__)
 
 config:Config=load_config()
 url_template=config.url.url
+
+def plus_sign(value: int) -> str:
+    return f'+{value}' if value > 0 else str(value)
 
 async def fetch(gorod) -> dict:
     url: str = url_template.format(gorod)
@@ -31,9 +35,9 @@ async def get_weather(gorod: str) -> str:
     try:
         return (
                 f"{LEXICON_RU.get("city")} : {data['location']['name']},\n"
-                f"{LEXICON_RU.get("time")} : {data['current']['last_updated']},\n"
-                f"{LEXICON_RU.get("temp")} : {int(data["current"]["temp_c"])},\n"
-                f"{LEXICON_RU.get("temp_c")} : {int(data["current"]["feelslike_c"])},\n"
+                f"{LEXICON_RU.get("time")} : {datetime.strptime(data['current']['last_updated'], '%Y-%m-%d %H:%M').strftime('%H:%M_%d-%m-%Y')},\n"
+                f"{LEXICON_RU.get("temp")} : {plus_sign(int(data["current"]["temp_c"]))},\n"
+                f"{LEXICON_RU.get("temp_c")} : {plus_sign(int(data["current"]["feelslike_c"]))},\n"
                 f"{LEXICON_RU.get("weather")} : {data['current']['condition']['text']}"
                 )
     except KeyError as e:
